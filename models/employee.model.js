@@ -9,8 +9,9 @@ let employees = `CREATE TABLE IF NOT EXISTS employees (
     lastname TEXT,
     email TEXT NOT NULL UNIQUE,
     phone TEXT,
-    department TEXT,
-    photo TEXT
+    department_id INTEGER,
+    photo TEXT,
+    FOREIGN KEY (department_id) REFERENCES departments(id)
     )`;
 
 // Create Required tables
@@ -22,7 +23,7 @@ DB.run(employees, [], (err) => {
 });
 
 const getEmployees = async () => {
-  const sql = `SELECT * FROM employees ORDER BY id DESC`;
+  const sql = `SELECT employees.*, departments.name as department FROM employees LEFT JOIN departments ON employees.department_id = departments.id ORDER BY employees.id DESC`;
   try {
     const rows = await new Promise((resolve, reject) => {
       DB.all(sql, [], (err, rows) => {
@@ -43,7 +44,7 @@ const getEmployees = async () => {
 };
 
 const getEmployee = async (employee_id) => {
-  const sql = `SELECT * FROM employees WHERE id = ? `;
+  const sql = `SELECT employees.*, departments.name as department FROM employees LEFT JOIN departments ON employees.department_id = departments.id WHERE employees.id = ?`;
   try {
     const row = await new Promise((resolve, reject) => {
       DB.all(sql, [employee_id], (err, row) => {
@@ -64,12 +65,12 @@ const getEmployee = async (employee_id) => {
 };
 
 const addEmployee = async (employee) => {
-  const { firstname, lastname, email, phone, department } = employee;
-  const sql = `INSERT INTO employees (firstname, lastname, email, phone, department) VALUES (?, ?, ?, ?, ?)`;
+  const { firstname, lastname, email, phone, department_id } = employee;
+  const sql = `INSERT INTO employees (firstname, lastname, email, phone, department_id) VALUES (?, ?, ?, ?, ?)`;
   try {
     DB.run(
       sql,
-      [firstname, lastname, email, phone, department],
+      [firstname, lastname, email, phone, department_id],
       function (row, err) {
         if (err) throw err;
         const newID = this.lastID;
@@ -86,7 +87,7 @@ const updateEmployee = async (employee_id, employee) => {
   /**
    * Destructure employee object passed form req.body
    */
-  const { firstname, lastname, email, phone, department } = employee;
+  const { firstname, lastname, email, phone, department_id } = employee;
 
   /**
    * Initialize empty arrays to hold values
@@ -115,9 +116,9 @@ const updateEmployee = async (employee_id, employee) => {
     updateList.push("phone = ?");
     updateValue.push(phone);
   }
-  if (department) {
-    updateList.push("department = ?");
-    updateValue.push(department);
+  if (department_id) {
+    updateList.push("department_id = ?");
+    updateValue.push(department_id);
   }
 
   if (!updateList.length === 0 || !updateValue === 0) {

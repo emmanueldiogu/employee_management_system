@@ -6,7 +6,6 @@ const departments = `CREATE TABLE IF NOT EXISTS departments (
     )`;
 
 // Create Required tables
-
 DB.run(departments, [], (err) => {
   if (err) console.error("Error creating department table");
   console.log("Department table created or already exist");

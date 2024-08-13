@@ -1,9 +1,12 @@
-import { addEmployee, getEmployees } from "../models/employee.model.js";
+import { addEmployee, getEmployee, getEmployees } from "../models/employee.model.js";
+
 
 const employees_controller = async (req, res) => {
+  // Render employee
   try {
     const employees = await getEmployees();
     const viewData = {
+      title: "Employees",
       page: "employees",
       user: req.session.user,
       employees,
@@ -15,25 +18,31 @@ const employees_controller = async (req, res) => {
   }
 };
 
+const employee_controller = async (req, res) => {
+  // Render update single employee
+  const id = req.param('id');
+  await getEmployee(id);
 
+  const viewData = {
+    title: "Employee",
+    page: "employees",
+    user: req.session.user,
+  };
+  res.render("admin/employees/update", viewData);
+};
 
 const add_employee_controller = (req, res) => {
-  // Render add employee
+  // Render add employee page
+  
   const viewData = {
+    title: "Add Employee",
     page: "employees",
     user: req.session.user,
   };
   res.render("admin/employees/add", viewData);
 };
 
-const employee_controller = async (req, res) => {
-  // Render update employee
-  const viewData = {
-    page: "employees",
-    user: req.session.user,
-  };
-  res.render("admin/employees/update", viewData);
-};
+
 
 const post_employee_controller = (req, res) => {
   // submit employee form
