@@ -1,0 +1,27 @@
+<% if (messages.error) { %>
+<div
+  class="position-absolute top-0 end-0 alert alert-danger alert-dismissible fade show"
+  role="alert"
+>
+  <%= messages.error %>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+<% } %> <% if (messages.success) { %>
+<div
+  class="position-absolute top-0 end-0 alert alert-success alert-dismissible fade show"
+  role="alert"
+>
+  <%= messages.success %>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+<% } %>

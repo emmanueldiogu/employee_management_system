@@ -1,0 +1,123 @@
+<aside
+  id="sidebar"
+  class="sidebar d-flex flex-column flex-shrink-0 p-3 border-end border-primary overflow-hidden"
+>
+  <!-- <h1 class="mb-4 fw-bold fs-4">
+    <span class="nav-link-logo"> R </span>
+    <span class="nav-link-text">Real EMS </span>
+  </h1> -->
+  <ul class="nav nav-pills rounded-0 flex-column mb-auto">
+    <li class="nav-item rounded-0">
+      <a
+        href="/admin/dashboard"
+        class="nav-link <%= page === 'dashboard' ? 'active' : '' %>"
+      >
+        <i class="bi bi-house-fill me-2 nav-link-icon"></i>
+        <span class="nav-link-text">Dashboard</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a
+        href="#usersSub"
+        data-bs-toggle="collapse"
+        class="nav-link <%= page === 'users' ? 'active' : '' %>"
+      >
+        <i class="bi bi-person me-2 nav-link-icon"></i>
+        <span class="nav-link-text">Users</span>
+      </a>
+      <ul
+        class="collapse nav flex-column ms-1"
+        id="usersSub"
+        data-bs-parent="#menu"
+      >
+        <li class="ms-4">
+          <a href="/admin/users" class="nav-link px-0">
+            <i class="bi bi-chevron-right"></i>
+            User List
+          </a>
+        </li>
+        <li class="ms-4">
+          <a href="/admin/users/add" class="nav-link px-0">
+            <i class="bi bi-chevron-right"></i>
+            Add User
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li class="nav-item">
+      <a
+        href="#employeesSub"
+        data-bs-toggle="collapse"
+        class="nav-link <%= page === 'employees' ? 'active' : '' %>"
+      >
+        <i class="bi bi-people me-2 nav-link-icon"></i>
+        <span class="nav-link-text">Employees</span>
+      </a>
+      <ul
+        class="collapse nav flex-column ms-1"
+        id="employeesSub"
+        data-bs-parent="#menu"
+      >
+        <li class="ms-4">
+          <a href="/admin/employees" class="nav-link px-0">
+            <i class="bi bi-chevron-right"></i>
+            Employee List
+          </a>
+        </li>
+        <li class="ms-4">
+          <a href="/admin/employees/add" class="nav-link px-0">
+            <i class="bi bi-chevron-right"></i>
+            Add Employee
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li class="nav-item">
+      <a
+        href="#departmentSub"
+        data-bs-toggle="collapse"
+        class="nav-link <%= page === 'departments' ? 'active' : '' %>"
+      >
+        <i class="bi bi-person-workspace me-2 nav-link-icon"></i>
+        <span class="nav-link-text">Department</span>
+      </a>
+      <ul
+        class="collapse nav flex-column ms-1"
+        id="departmentSub"
+        data-bs-parent="#menu"
+      >
+        <li class="ms-4">
+          <a href="/admin/departments" class="nav-link px-0">
+            <i class="bi bi-chevron-right"></i>
+            Department List
+          </a>
+        </li>
+        <li class="ms-4">
+          <a href="#" class="nav-link px-0">
+            <i class="bi bi-chevron-right"></i>
+            Add Department
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li class="nav-item">
+      <a
+        href="/admin/settings"
+        class="nav-link <%= page === 'settings' ? 'active' : '' %>"
+      >
+        <i class="bi bi-gear me-2 nav-link-icon"></i>
+        <span class="nav-link-text">Settings</span>
+      </a>
+    </li>
+  </ul>
+  <ul class="nav nav-pills d-flex">
+    <li class="nav-item">
+      <a href="#" class="nav-link" data-bs-toggle="sidebar-expand">
+        <i
+          class="bi bi-chevron-double-left me-2 nav-link-icon fa-angles-left"
+        ></i>
+        <span class="nav-link-text">Collapse Menu</span>
+      </a>
+    </li>
+  </ul>
+</aside>

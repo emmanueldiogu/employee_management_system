@@ -1,0 +1,29 @@
+/* body {
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+}
+
+aside {
+  width: 250px;
+  order: 1;
+}
+aside.shrink {
+  width: auto;
+}
+
+main {
+  order: 2;
+  width: 100%;
+  overflow-y: scroll;
+}
+main header {
+  height: 50px;
+}
+main header .navbar {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+main section {
+  height: 800px;
+} */
