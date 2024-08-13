@@ -1,6 +1,6 @@
 import { addEmployee, getEmployees } from "../models/employee.model.js";
 
-const employees = async (req, res) => {
+const employees_controller = async (req, res) => {
   try {
     const employees = await getEmployees();
     const viewData = {
@@ -15,29 +15,28 @@ const employees = async (req, res) => {
   }
 };
 
-const employee = async (req, res) => {
+
+
+const add_employee_controller = (req, res) => {
+  // Render add employee
   const viewData = {
     page: "employees",
     user: req.session.user,
   };
-  res.render("admin/update_employee", viewData);
+  res.render("admin/employees/add", viewData);
 };
 
-const add_employee = (req, res) => {
+const employee_controller = async (req, res) => {
+  // Render update employee
   const viewData = {
     page: "employees",
     user: req.session.user,
   };
-  res.render("admin/add_employee", viewData);
+  res.render("admin/employees/update", viewData);
 };
 
-const post_employee = (req, res) => {
-  const employee = addUser({
-    name: "admin",
-    email: "admin@example.com",
-    password: "P@$$word",
-  });
-  res.send(employee);
+const post_employee_controller = (req, res) => {
+  // submit employee form
 };
 
-export { employees, employee, add_employee, post_employee };
+export { employees_controller as employees, employee_controller as employee, add_employee_controller as add_employee, post_employee_controller as post_employee };
