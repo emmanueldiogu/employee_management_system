@@ -65,7 +65,7 @@
                         </i>
                       </a>
                       <button
-                        data-bs-target="#deleteEmployeeModal"
+                        data-bs-target="#deleteModal"
                         class="d-inline-block btn btn-danger rounded-0"
                         data-bs-toggle="modal"
                       >
@@ -110,9 +110,9 @@
 </div>
 <!-- Delete Modal HTML -->
 <div
-  id="deleteEmployeeModal"
+  id="deleteModal"
   tabindex="-1"
-  aria-labelledby="deleteEmployeeModalLabel"
+  aria-labelledby="deleteModalLabel"
   aria-hidden="true"
   class="modal fade"
 >
@@ -139,8 +139,33 @@
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
           Close
         </button>
-        <input type="submit" class="btn btn-danger" value="Delete" />
+        <form
+          id="deleteForm"
+          action="/admin/employees/delete"
+          method="POST"
+        >
+          <input type="hidden" id="deleteId" name="deleteId" value="" />
+          <input type="submit" class="btn btn-danger" value="Delete" />
+        </form>
       </div>
     </div>
   </div>
 </div>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const deleteButtons = document.querySelectorAll(
+      'button[data-bs-target="#deleteModal"]'
+    );
+    const deleteIdInput = document.getElementById("deleteId");
+
+    deleteButtons.forEach((button) => {
+      button.addEventListener("click", function () {
+        const deleteId = this.closest("tr")
+          .querySelector("a")
+          .href.split("/")
+          .slice(-2, -1)[0];
+        deleteIdInput.value = deleteId;
+      });
+    });
+  });
+</script>

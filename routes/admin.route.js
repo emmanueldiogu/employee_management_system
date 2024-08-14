@@ -3,6 +3,7 @@ import {
   add_department,
   departments,
   post_add_department,
+  post_delete_department,
   post_update_department,
   update_department,
 } from "../controllers/departments.controller.js";
@@ -51,7 +52,7 @@ router.get("/employee/:id", employee);
 
 router.get("/employees/:id/update", update_employee);
 router.post("/employees/:id/update", post_update_employee);
-router.get("/employees/:id/delete", post_delete_employee);
+router.post("/employees/delete", post_delete_employee);
 
 router.get("/departments", departments);
 router.get("/departments/add", add_department);
@@ -59,10 +60,10 @@ router.post("/departments/add", post_add_department);
 
 router.get("/departments/:id/update", update_department);
 router.post("/departments/:id/update", post_update_department);
+router.post("/departments/delete", post_delete_department);
 
 router.get("/users", users);
 
 router.get("/employees/search", search_employees);
-
 
 export default router;

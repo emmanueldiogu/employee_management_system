@@ -12,7 +12,7 @@ let users = `CREATE TABLE IF NOT EXISTS users (
 // users table
 DB.run(users, [], (err) => {
   if (err) console.error("Error creating user table");
-  console.log("User table created or already exist");
+  console.info("User table created or already exist");
   return;
 });
 

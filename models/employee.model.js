@@ -18,7 +18,7 @@ let employees = `CREATE TABLE IF NOT EXISTS employees (
 
 DB.run(employees, [], (err) => {
   if (err) console.error("Error creating employee table");
-  console.log("Employee table created or already exist");
+  console.info("Employee table created or already exist");
   return;
 });
 
@@ -74,7 +74,7 @@ const addEmployee = async (employee) => {
       function (row, err) {
         if (err) throw err;
         const newID = this.lastID;
-        console.log(`Employee saved to ${newID}`);
+        console.info(`Employee saved to ${newID}`);
         return row;
       }
     );
@@ -87,7 +87,6 @@ const updateEmployee = async (employee_id, employee) => {
   /**
    * Destructure employee object passed from req.body
    */
-  console.log(employee);
 
   const { firstname, lastname, email, phone, department_id } = employee;
 
@@ -132,14 +131,10 @@ const updateEmployee = async (employee_id, employee) => {
    */
   updateValue.push(employee_id);
 
-  console.log(updateList);
-  console.log(updateValue);
-
   /**
    * Update SQL Query
    */
   const sql = `UPDATE employees SET ${updateList.join(", ")} WHERE id = ?`;
-  console.log(sql);
 
   try {
     const row = await new Promise((resolve, reject) => {
@@ -153,8 +148,6 @@ const updateEmployee = async (employee_id, employee) => {
     process.on("exit", () => {
       DB.close(closeCallback);
     });
-    console.log("Final row: ", row);
-
     return row;
   } catch (err) {
     console.error(err.message);
@@ -163,7 +156,7 @@ const updateEmployee = async (employee_id, employee) => {
 };
 
 const deleteEmployee = async (employee_id) => {
-  const sql = `DELETE FROM employee WHERE id = ?`;
+  const sql = `DELETE FROM employees WHERE id = ?`;
   try {
     await new Promise((resolve, reject) => {
       DB.run(sql, [employee_id], (err) => {

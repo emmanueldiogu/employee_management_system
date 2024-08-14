@@ -45,9 +45,13 @@ app.use(indexRouter);
 app.use("/admin", checkAuthenticated, adminRouter);
 
 // Test route
-app.get("/test", (req, res) => {
-  console.log("Index route hit");
-  res.send("working");
+app.get("*", (req, res) => {
+  const viewData = {
+    page: "404",
+    title: "404",
+    layout: "./layouts/no_layout",
+  };
+  res.render("404", viewData);
 });
 
 // Start server

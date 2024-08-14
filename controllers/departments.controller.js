@@ -78,7 +78,7 @@ const post_update_department = async (req, res) => {
 
 const post_delete_department = async (req, res) => {
   // submit update department form
-  const id = req.params.id;
+  const id = req.body.deleteId;
   try {
     await deleteDepartment(id);
     req.flash("success", "Department Deleted Successfully!");

@@ -8,7 +8,7 @@ const departments = `CREATE TABLE IF NOT EXISTS departments (
 // Create Required tables
 DB.run(departments, [], (err) => {
   if (err) console.error("Error creating department table");
-  console.log("Department table created or already exist");
+  console.info("Department table created or already exist");
   return;
 });
 
@@ -61,7 +61,7 @@ const addDepartment = async (department) => {
     DB.run(sql, [name], function (row, err) {
       if (err) throw err;
       const newID = this.lastID;
-      console.log(`Department saved to ${newID}`);
+      console.info(`Department saved to ${newID}`);
       return row;
     });
   } catch (err) {
@@ -99,14 +99,14 @@ const updateDepartment = async (department_id, department) => {
 };
 
 const deleteDepartment = async (department_id) => {
-  const sql = `DELETE FROM department WHERE id = ?`;
+  const sql = `DELETE FROM departments WHERE id = ?`;
   try {
     await new Promise((resolve, reject) => {
-      DB.run(sql, [department_id], (err, row) => {
+      DB.run(sql, [department_id], (err) => {
         if (err) {
           return reject(err);
         }
-        resolve(row);
+        resolve();
       });
     });
     process.on("exit", () => {

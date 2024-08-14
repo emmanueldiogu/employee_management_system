@@ -97,7 +97,7 @@ const post_update_employee = async (req, res) => {
 
 const post_delete_employee = async (req, res) => {
   // submit update employee form
-  const id = req.params.id;
+  const id = req.body.deleteId;
   try {
     await deleteEmployee(id);
     req.flash("success", "Employee Deleted Successfully!");
