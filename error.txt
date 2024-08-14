@@ -1,0 +1,59 @@
+ReferenceError: search_employees is not defined
+    at file:///C:/Users/mmdol/Documents/MY_SCHOOL_FILES/Humber%20College/semester%202/Web%20Application%20Programming%20-%20WDDM-120/project-3_database_integration/routes/admin.route.js:64:33
+    at ModuleJob.run (node:internal/modules/esm/module_job:222:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:123:5)
+
+Node.js v20.14.0
+[nodemon] starting `node app.js`
+file:///C:/Users/mmdol/Documents/MY_SCHOOL_FILES/Humber%20College/semester%202/Web%20Application%20Programming%20-%20WDDM-120/project-3_database_integration/routes/admin.route.js:64
+router.get("/employees/search", search_employees);
+                                ^
+
+ReferenceError: search_employees is not defined
+    at file:///C:/Users/mmdol/Documents/MY_SCHOOL_FILES/Humber%20College/semester%202/Web%20Application%20Programming%20-%20WDDM-120/project-3_database_integration/routes/admin.route.js:64:33
+    at ModuleJob.run (node:internal/modules/esm/module_job:222:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:123:5)
+
+Node.js v20.14.0
+[nodemon] app crashed - waiting for file changes before starting...
+[nodemon] restarting due to changes...
+[nodemon] starting `node app.js`
+file:///C:/Users/mmdol/Documents/MY_SCHOOL_FILES/Humber%20College/semester%202/Web%20Application%20Programming%20-%20WDDM-120/project-3_database_integration/routes/admin.route.js:64
+router.get("/employees/search", search_employees);
+                                ^
+
+ReferenceError: search_employees is not defined
+    at file:///C:/Users/mmdol/Documents/MY_SCHOOL_FILES/Humber%20College/semester%202/Web%20Application%20Programming%20-%20WDDM-120/project-3_database_integration/routes/admin.route.js:64:33
+    at ModuleJob.run (node:internal/modules/esm/module_job:222:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:123:5)
+
+Node.js v20.14.0
+[nodemon] app crashed - waiting for file changes before starting...
+[nodemon] restarting due to changes...
+[nodemon] starting `node app.js`
+file:///C:/Users/mmdol/Documents/MY_SCHOOL_FILES/Humber%20College/semester%202/Web%20Application%20Programming%20-%20WDDM-120/project-3_database_integration/routes/admin.route.js:64
+router.get("/employees/search", search_employees);
+                                ^
+
+ReferenceError: search_employees is not defined
+    at file:///C:/Users/mmdol/Documents/MY_SCHOOL_FILES/Humber%20College/semester%202/Web%20Application%20Programming%20-%20WDDM-120/project-3_database_integration/routes/admin.route.js:64:33
+    at ModuleJob.run (node:internal/modules/esm/module_job:222:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:123:5)
+
+Node.js v20.14.0
+[nodemon] app crashed - waiting for file changes before starting...
+[nodemon] restarting due to changes...
+[nodemon] starting `node app.js`
+file:///C:/Users/mmdol/Documents/MY_SCHOOL_FILES/Humber%20College/semester%202/Web%20Application%20Programming%20-%20WDDM-120/project-3_database_integration/routes/admin.route.js:64
+router.get("/employees/search", search_employees);
+                                ^
+
+ReferenceError: search_employees is not defined
+    at file:///C:/Users/mmdol/Documents/MY_SCHOOL_FILES/Humber%20College/semester%202/Web%20Application%20Programming%20-%20WDDM-120/project-3_database_integration/routes/admin.route.js:64:33
+    at ModuleJob.run (node:internal/modules/esm/module_job:222:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:316:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:123:5)

@@ -1,145 +1,90 @@
-<!DOCTYPE html>
-<html lang="en">
-  <%- include('../includes/admin/head') %>
-
-  <body>
-    <%- include('../includes/admin/error-display') %>
-    <div class="d-flex flex-column" style="height: 100dvh">
-      <%- include('../includes/admin/header') %>
-      <div class="d-flex flex-grow-1 mt-5 pt-2">
-        <%- include('../includes/admin/aside') %>
-
-        <main class="flex-grow-1 my-4">
-          <div class="container">
-            <div class="row">
-              <section>
-                <div class="card rounded-0">
-                  <div
-                    class="card-header rounded-0 d-flex justify-content-between align-items-center text-bg-primary px-4 py-2"
-                  >
-                    <div class="">
-                      <h2>Employees <b>Summary</b></h2>
-                    </div>
-                    <div
-                      class="d-flex flex-row-reverse justify-content-between align-items-center gap-3"
-                    >
-                      <a
-                        href="#addEmployeeModal"
-                        class="btn btn-success rounded-0"
-                        data-bs-toggle="modal"
-                      >
-                        <i class="bi bi-plus-circle-fill"></i>
-                        <span>Add New Employee</span>
-                      </a>
-                      <button
-                        type="button"
-                        class="btn btn-danger rounded-0"
-                        data-bs-target="#deleteEmployeeModal"
-                        data-bs-toggle="modal"
-                      >
-                        <i class="bi bi-dash-circle-fill"></i>
-                        <span>Delete</span>
-                      </button>
-                    </div>
-                  </div>
-                  <div class="card-body">
-                    <div class="my-4">
-                      <div class="table-responsive">
-                        <table class="table table-striped table-hover">
-                          <thead class="table-dark">
-                            <tr class="text-center">
-                              <th>
-                                <span class="custom-checkbox">
-                                  <input type="checkbox" id="selectAll" />
-                                  <label for="selectAll"></label>
-                                </span>
-                              </th>
-                              <th>Name</th>
-                              <th>Email</th>
-                              <th>Address</th>
-                              <th>Phone</th>
-                              <th>Actions</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr class="text-center align-middle">
-                              <td>
-                                <span class="custom-checkbox">
-                                  <input
-                                    type="checkbox"
-                                    id="checkbox1"
-                                    name="options[]"
-                                    value="1"
-                                  />
-                                  <label for="checkbox1"></label>
-                                </span>
-                              </td>
-                              <td>Thomas Hardy</td>
-                              <td>thomashardy@mail.com</td>
-                              <td>89 Chiaroscuro Rd, Portland, USA</td>
-                              <td>(171) 555-2222</td>
-                              <td class="d-flex gap-3 justify-content-end">
-                                <a
-                                  href="#editEmployeeModal"
-                                  class="d-inline-block btn btn-info rounded-0"
-                                  data-bs-toggle="modal"
-                                >
-                                  <i
-                                    class="bi bi-pencil text-white"
-                                    class="material-icons"
-                                    data-bs-toggle="tooltip"
-                                    title="Edit"
-                                  >
-                                  </i>
-                                </a>
-                                <button
-                                  data-bs-target="#deleteEmployeeModal"
-                                  class="d-inline-block btn btn-danger rounded-0"
-                                  data-bs-toggle="modal"
-                                >
-                                  <i
-                                    class="bi bi-trash text-white"
-                                    class="material-icons"
-                                    data-bs-toggle="tooltip"
-                                    title="Delete"
-                                  >
-                                  </i>
-                                </button>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <nav aria-label="...">
-                        <ul class="pagination">
-                          <li class="page-item disabled">
-                            <a class="page-link">Previous</a>
-                          </li>
-                          <li class="page-item">
-                            <a class="page-link" href="#">1</a>
-                          </li>
-                          <li class="page-item active" aria-current="page">
-                            <a class="page-link" href="#">2</a>
-                          </li>
-                          <li class="page-item">
-                            <a class="page-link" href="#">3</a>
-                          </li>
-                          <li class="page-item">
-                            <a class="page-link" href="#">Next</a>
-                          </li>
-                        </ul>
-                      </nav>
-                    </div>
-                  </div>
-                </div>
-              </section>
-            </div>
+<div class="container">
+  <div class="row">
+    <section>
+      <div class="card rounded-0">
+        <div
+          class="card-header rounded-0 d-flex justify-content-between align-items-center text-bg-primary px-4 py-2"
+        >
+          <div class="">
+            <h2>Add Employee</h2>
           </div>
-        </main>
+        </div>
+        <div class="card-body">
+          <div class="my-4">
+            <form action="/admin/employees/add" method="POST">
+              <div class="mb-3">
+                <label for="firstname" class="form-label"> First Name: </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="firstname"
+                  name="firstname"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="lastname" class="form-label"> Last Name: </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="lastname"
+                  name="lastname"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label"> Email: </label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  name="email"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="phone" class="form-label"> Phone: </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="phone"
+                  name="phone"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="department" class="form-label"> Department: </label>
+                <select
+                  class="form-select"
+                  aria-label="Default select example"
+                  id="department"
+                  name="department_id"
+                >
+                  <% departments.forEach(function(department) { %>
+                  <option value="<%= department.id %>">
+                    <%= department.name %>
+                  </option>
+                  <% }); %>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="photo" class="form-label"> Photo: </label>
+                <input
+                  type="file"
+                  class="form-control"
+                  id="photo"
+                  name="photo"
+                />
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn btn-primary">
+                  Add Employee
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
-      <%- include('../includes/admin/footer') %>
-    </div>
-    <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="/assets/js/script.js"></script>
-  </body>
-</html>
+    </section>
+  </div>
+</div>

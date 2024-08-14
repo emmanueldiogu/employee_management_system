@@ -1,5 +1,5 @@
-import DB, { closeCallback } from "../db/database.js";
 import multer from "multer";
+import DB, { closeCallback } from "../db/database.js";
 
 const upload = multer({ dest: "public/uploads/" });
 
@@ -85,8 +85,10 @@ const addEmployee = async (employee) => {
 
 const updateEmployee = async (employee_id, employee) => {
   /**
-   * Destructure employee object passed form req.body
+   * Destructure employee object passed from req.body
    */
+  console.log(employee);
+
   const { firstname, lastname, email, phone, department_id } = employee;
 
   /**
@@ -97,8 +99,8 @@ const updateEmployee = async (employee_id, employee) => {
 
   /**
    * Check the values in the employee object
-   * If a value exist, push key into the updateList
-   * and push the value ino the updateValue
+   * If a value exists, push key into the updateList
+   * and push the value into the updateValue
    */
   if (firstname) {
     updateList.push("firstname = ?");
@@ -121,7 +123,7 @@ const updateEmployee = async (employee_id, employee) => {
     updateValue.push(department_id);
   }
 
-  if (!updateList.length === 0 || !updateValue === 0) {
+  if (updateList.length === 0 || updateValue.length === 0) {
     throw { error: "Empty List" };
   }
 
@@ -130,22 +132,29 @@ const updateEmployee = async (employee_id, employee) => {
    */
   updateValue.push(employee_id);
 
+  console.log(updateList);
+  console.log(updateValue);
+
   /**
    * Update SQL Query
    */
   const sql = `UPDATE employees SET ${updateList.join(", ")} WHERE id = ?`;
+  console.log(sql);
+
   try {
     const row = await new Promise((resolve, reject) => {
-      DB.run(sql, [updateValue], (err, row) => {
+      DB.run(sql, updateValue, function (err) {
         if (err) {
           return reject(err);
         }
-        resolve(row);
+        resolve(this.changes);
       });
     });
     process.on("exit", () => {
       DB.close(closeCallback);
     });
+    console.log("Final row: ", row);
+
     return row;
   } catch (err) {
     console.error(err.message);
@@ -194,11 +203,42 @@ const getEmployeeCount = async () => {
   }
 };
 
+const searchEmployees = async (query) => {
+  const sql = `SELECT employees.*, departments.name as department 
+               FROM employees 
+               LEFT JOIN departments ON employees.department_id = departments.id 
+               WHERE employees.firstname LIKE ? OR employees.lastname LIKE ? OR employees.email LIKE ? OR departments.name LIKE ? 
+               ORDER BY employees.id DESC`;
+  const searchQuery = `%${query}%`;
+  try {
+    const rows = await new Promise((resolve, reject) => {
+      DB.all(
+        sql,
+        [searchQuery, searchQuery, searchQuery, searchQuery],
+        (err, rows) => {
+          if (err) {
+            return reject(err);
+          }
+          resolve(rows);
+        }
+      );
+    });
+    process.on("exit", () => {
+      DB.close(closeCallback);
+    });
+    return rows;
+  } catch (err) {
+    console.error(err.message);
+    throw err; // rethrow the error to be handled by the caller
+  }
+};
+
 export {
-  getEmployees,
-  getEmployee,
   addEmployee,
-  updateEmployee,
   deleteEmployee,
+  getEmployee,
   getEmployeeCount,
+  getEmployees,
+  searchEmployees,
+  updateEmployee,
 };

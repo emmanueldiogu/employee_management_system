@@ -1,17 +1,30 @@
 <div class="container">
   <div class="row">
+    <form action="/admin/employees/search" method="GET" class="mb-4">
+      <div class="input-group">
+        <input
+          type="text"
+          name="query"
+          class="form-control"
+          placeholder="Search employees..."
+          required
+        />
+        <button type="submit" class="btn btn-primary">Search</button>
+      </div>
+    </form>
+
     <section>
       <div class="card rounded-0">
         <div
           class="card-header rounded-0 d-flex justify-content-between align-items-center text-bg-primary px-4 py-2"
         >
           <div class="">
-            <h2>Employees <b>Summary</b></h2>
+            <h2>Search Results for <b></b></h2>
           </div>
           <div
             class="d-flex flex-row-reverse justify-content-between align-items-center gap-3"
           >
-            <a href="/admin/departments/add" class="btn btn-success rounded-0">
+            <a href="/admin/employees/add" class="btn btn-success rounded-0">
               <i class="bi bi-plus-circle-fill"></i>
               <span>Add New Employee</span>
             </a>
@@ -25,17 +38,23 @@
                   <tr class="text-center">
                     <th>#</th>
                     <th>Name</th>
+                    <th>Email</th>
+                    <th>Department</th>
+                    <th>Phone</th>
                     <th>Actions</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <% departments.forEach(function(department, index) { %>
+                  <% employees.forEach(function(employee, index) { %>
                   <tr class="text-center align-middle">
                     <td><%= index + 1 %></td>
-                    <td><%= department.name %></td>
+                    <td><%= employee.firstname %> <%= employee.lastname %></td>
+                    <td><%= employee.email %></td>
+                    <td><%= employee.department %></td>
+                    <td><%= employee.phone %></td>
                     <td class="d-flex gap-3 justify-content-end">
                       <a
-                        href="/admin/departments/<%= department.id %>/update"
+                        href="/admin/employees/<%= employee.id %>/update"
                         class="d-inline-block btn btn-info rounded-0"
                       >
                         <i
@@ -120,7 +139,6 @@
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
           Close
         </button>
-        <form action="/admin/departments//add" method="POST"></form>
         <input type="submit" class="btn btn-danger" value="Delete" />
       </div>
     </div>

@@ -25,40 +25,13 @@
                   <tr class="text-center">
                     <th>#</th>
                     <th>Name</th>
-                    <th>Actions</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <% departments.forEach(function(department, index) { %>
+                  <% users.forEach(function(department, index) { %>
                   <tr class="text-center align-middle">
                     <td><%= index + 1 %></td>
                     <td><%= department.name %></td>
-                    <td class="d-flex gap-3 justify-content-end">
-                      <a
-                        href="/admin/departments/<%= department.id %>/update"
-                        class="d-inline-block btn btn-info rounded-0"
-                      >
-                        <i
-                          class="bi bi-pencil text-white"
-                          class="material-icons"
-                          title="Edit"
-                        >
-                        </i>
-                      </a>
-                      <button
-                        data-bs-target="#deleteEmployeeModal"
-                        class="d-inline-block btn btn-danger rounded-0"
-                        data-bs-toggle="modal"
-                      >
-                        <i
-                          class="bi bi-trash text-white"
-                          class="material-icons"
-                          data-bs-toggle="tooltip"
-                          title="Delete"
-                        >
-                        </i>
-                      </button>
-                    </td>
                   </tr>
                   <% }); %>
                 </tbody>

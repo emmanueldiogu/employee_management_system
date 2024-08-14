@@ -35,7 +35,6 @@ const register = async (req, res) => {
   try {
     const hashedPassword = bcryptjs.hashSync(password, 10);
     const user = await createUser({ name, email, password: hashedPassword });
-    console.log("Register controller", user);
 
     req.flash("success", "User registered successfully. Login to your account");
     res.redirect("/login");
