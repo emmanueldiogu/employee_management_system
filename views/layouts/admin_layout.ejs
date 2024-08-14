@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../includes/admin/head') %>
+
+  <body>
+    <%- include('../includes/admin/error-display') %>
+    <div class="d-flex flex-column" style="height: 100dvh">
+      <%- include('../includes/admin/header') %>
+      <div class="d-flex flex-grow-1 mt-5 pt-2">
+        <%- include('../includes/admin/aside') %>
+
+        <main class="flex-grow-1 my-4"><%- body %></main>
+      </div>
+      <%- include('../includes/admin/footer') %>
+    </div>
+    <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/script.js"></script>
+  </body>
+</html>

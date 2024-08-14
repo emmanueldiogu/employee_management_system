@@ -1,17 +1,18 @@
 import express from "express";
-import path from "path";
-import indexRouter from "./routes/index.route.js";
-import adminRouter from "./routes/admin.route.js";
-import { PORT } from "./config.js";
-import session from "express-session";
+import layout from "express-ejs-layouts";
 import flash from "express-flash";
-import {
-  checkAuthenticated,
-} from "./middleware/auth.middleware.js";
+import session from "express-session";
+import path from "path";
+import { PORT } from "./config.js";
+import { checkAuthenticated } from "./middleware/auth.middleware.js";
+import adminRouter from "./routes/admin.route.js";
+import indexRouter from "./routes/index.route.js";
 const __dirname = import.meta.dirname;
 
 const app = express();
+app.use(layout);
 app.set("view engine", "ejs");
+app.set("layout", "./layouts/admin_layout");
 
 /**
  * Express configs

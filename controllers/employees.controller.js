@@ -1,7 +1,12 @@
-import { addEmployee, getEmployee, getEmployees } from "../models/employee.model.js";
+import {
+  addEmployee,
+  deleteEmployee,
+  getEmployee,
+  getEmployees,
+  updateEmployee,
+} from "../models/employee.model.js";
 
-
-const employees_controller = async (req, res) => {
+const employees = async (req, res) => {
   // Render employee
   try {
     const employees = await getEmployees();
@@ -18,22 +23,23 @@ const employees_controller = async (req, res) => {
   }
 };
 
-const employee_controller = async (req, res) => {
+const employee = async (req, res) => {
   // Render update single employee
-  const id = req.param('id');
-  await getEmployee(id);
+  const id = req.param("id");
+  const employee = await getEmployee(id);
 
   const viewData = {
     title: "Employee",
     page: "employees",
     user: req.session.user,
+    employee,
   };
-  res.render("admin/employees/update", viewData);
+  res.render("admin/employees/single", viewData);
 };
 
-const add_employee_controller = (req, res) => {
+const add_employee = (req, res) => {
   // Render add employee page
-  
+
   const viewData = {
     title: "Add Employee",
     page: "employees",
@@ -42,10 +48,60 @@ const add_employee_controller = (req, res) => {
   res.render("admin/employees/add", viewData);
 };
 
-
-
-const post_employee_controller = (req, res) => {
+const post_add_employee = async (req, res) => {
   // submit employee form
+  try {
+    await addEmployee(req.body);
+    res.redirect("/admin/employees");
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Internal Server Error");
+  }
 };
 
-export { employees_controller as employees, employee_controller as employee, add_employee_controller as add_employee, post_employee_controller as post_employee };
+const update_employee = async (req, res) => {
+  // Render update employee page
+  const employee = await getEmployee(id);
+
+  const viewData = {
+    title: "Update Employee",
+    page: "employees",
+    user: req.session.user,
+    employee,
+  };
+  res.render("admin/employees/update", viewData);
+};
+
+const post_update_employee = async (req, res) => {
+  // submit update employee form
+  const id = req.params.id;
+  try {
+    await updateEmployee(id, req.body);
+    res.redirect("/admin/employees");
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Internal Server Error");
+  }
+};
+
+const post_delete_employee = async (req, res) => {
+  // submit update employee form
+  const id = req.params.id;
+  try {
+    await deleteEmployee(id);
+    res.redirect("/admin/employees");
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Internal Server Error");
+  }
+};
+
+export {
+  employees,
+  employee,
+  add_employee,
+  post_add_employee,
+  update_employee,
+  post_update_employee,
+  post_delete_employee,
+};

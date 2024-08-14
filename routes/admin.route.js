@@ -1,13 +1,16 @@
 import express from "express";
+import { departments } from "../controllers/departments.controller.js";
 import {
   add_employee,
   employee,
   employees,
-  post_employee,
+  post_add_employee,
+  post_delete_employee,
+  post_update_employee,
+  update_employee,
 } from "../controllers/employees.controller.js";
-import { departments } from "../controllers/departments.controller.js";
-import { getEmployeeCount } from "../models/employee.model.js";
 import { getDepartmentCount } from "../models/department.model.js";
+import { getEmployeeCount } from "../models/employee.model.js";
 import { getUserCount } from "../models/user.model.js";
 const router = express.Router();
 
@@ -31,13 +34,19 @@ router.get("/dashboard", async (req, res) => {
   }
 });
 
-router.get("/employees", employees);
-
-router.get("/employees/update/:id", employee);
-
 router.get("/employees/add", add_employee);
 
-router.post("/employees/add", post_employee);
+router.post("/employees/add", post_add_employee);
+
+router.get("/employees", employees);
+
+router.get("/employee/:id", employee);
+
+router.get("/employees/:id/update", update_employee);
+
+router.get("/employees/:id/update", post_update_employee);
+
+router.get("/employee/:id/delete", post_delete_employee);
 
 router.get("/departments", departments);
 

@@ -1,13 +1,14 @@
 import express from "express";
-import { createUser, getUsers } from "../models/user.model.js";
 import { login, logout, register } from "../controllers/auth.controller.js";
 import { checkNotAuthenticated } from "../middleware/auth.middleware.js";
+import { createUser } from "../models/user.model.js";
 const router = express.Router();
 
 router.get("/", async (req, res) => {
   try {
     const viewData = {
       page: "employees",
+      layout: "./layouts/no_layout",
     };
     res.render("index", viewData);
   } catch (err) {
@@ -20,6 +21,7 @@ router.get("/login", checkNotAuthenticated, (req, res) => {
   const viewData = {
     page: "login",
     title: "Login",
+    layout: "./layouts/no_layout",
   };
   res.render("login", viewData);
 });
@@ -28,6 +30,7 @@ router.get("/register", checkNotAuthenticated, (req, res) => {
   const viewData = {
     page: "register",
     title: "Register",
+    layout: "./layouts/no_layout",
   };
   res.render("register", viewData);
 });

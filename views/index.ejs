@@ -1,33 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home</title>
-    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
-    <link
-      rel="stylesheet"
-      href="/bootstrap-icons-font/bootstrap-icons.min.css"
-    />
-  </head>
-  <body class="min-vh-100">
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-      <div class="container">
-        <a class="navbar-brand" href="#">Real EMS</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <!-- <ul class="navbar-nav ms-auto">
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">Real EMS</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <!-- <ul class="navbar-nav ms-auto">
             <li class="nav-item">
               <a class="nav-link" href="/">Home</a>
             </li>
@@ -41,45 +28,40 @@
               <a class="nav-link" href="/contact">Contact</a>
             </li>
           </ul> -->
-        </div>
-      </div>
-    </nav>
-    <% if (messages.error) { %>
-    <div class="position-absolute top-0 end-0 alert alert-danger">
-      <%= messages.error %>
-      <button
-        type="button"
-        class="btn-close"
-        data-bs-dismiss="alert"
-        aria-label="Close"
-      ></button>
     </div>
-    <% } %> <% if (messages.success) { %>
-    <div class="position-absolute top-0 end-0 alert alert-success">
-      <%= messages.success %>
-      <button
-        type="button"
-        class="btn-close"
-        data-bs-dismiss="alert"
-        aria-label="Close"
-      ></button>
-    </div>
-    <% } %>
+  </div>
+</nav>
+<% if (messages.error) { %>
+<div class="position-absolute top-0 end-0 alert alert-danger">
+  <%= messages.error %>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+<% } %> <% if (messages.success) { %>
+<div class="position-absolute top-0 end-0 alert alert-success">
+  <%= messages.success %>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+<% } %>
 
-    <!-- Hero Section -->
-    <section
-      id="hero"
-      class="bg-primary text-white text-center py-5 m-auto d-flex justify-content-center align-items-center"
-      style="height: calc(100dvh - 56px)"
-    >
-      <div class="container">
-        <h1 class="display-4">Welcome to Real EMS</h1>
-        <p class="lead">
-          We provide the best solutions Employee Management System
-        </p>
-        <a href="/login" class="btn btn-secondary btn-lg">Login to Dashboard</a>
-      </div>
-    </section>
-    <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
-  </body>
-</html>
+<!-- Hero Section -->
+<section
+  id="hero"
+  class="bg-primary text-white text-center py-5 m-auto d-flex justify-content-center align-items-center"
+  style="height: calc(100dvh - 56px)"
+>
+  <div class="container">
+    <h1 class="display-4">Welcome to Real EMS</h1>
+    <p class="lead">We provide the best solutions Employee Management System</p>
+    <a href="/login" class="btn btn-secondary btn-lg">Login to Dashboard</a>
+  </div>
+</section>
