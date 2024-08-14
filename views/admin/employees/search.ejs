@@ -19,20 +19,13 @@
           class="card-header rounded-0 d-flex justify-content-between align-items-center text-bg-primary px-4 py-2"
         >
           <div class="">
-            <h2>Search Results for <b></b></h2>
-          </div>
-          <div
-            class="d-flex flex-row-reverse justify-content-between align-items-center gap-3"
-          >
-            <a href="/admin/employees/add" class="btn btn-success rounded-0">
-              <i class="bi bi-plus-circle-fill"></i>
-              <span>Add New Employee</span>
-            </a>
+            <h2>Search Results for "<b><%= query %></b>"</h2>
           </div>
         </div>
         <div class="card-body">
           <div class="my-4">
             <div class="table-responsive">
+              <% if (employees.length > 0) { %>
               <table class="table table-striped table-hover">
                 <thead class="table-dark">
                   <tr class="text-center">
@@ -82,6 +75,11 @@
                   <% }); %>
                 </tbody>
               </table>
+              <% } else { %>
+              <div>
+                <p class="text-center">No results found...</p>
+              </div>
+              <% } %>
             </div>
             <nav aria-label="...">
               <ul class="pagination">

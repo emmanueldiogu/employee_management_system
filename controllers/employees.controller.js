@@ -118,6 +118,7 @@ const search_employees = async (req, res) => {
       page: "employees",
       user: req.session.user,
       employees,
+      query,
     };
     res.render("admin/employees/search", viewData);
   } catch (err) {
